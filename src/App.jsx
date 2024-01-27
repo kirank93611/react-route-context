@@ -123,7 +123,7 @@ import { set } from "mongoose";
 
 //recoiil
 
-import { recoil, useRecoilState } from "recoil";
+import { RecoilRoot, recoil, useRecoilState } from "recoil";
 import { countAtom } from "./store/atoms/count";
 function App() {
   const [count, setCount] = useState(0);
@@ -139,8 +139,10 @@ function App() {
 function Count() {
   return (
     <div>
-      <CountRenderer />
-      <Buttons />
+      <RecoilRoot>
+        <CountRenderer />
+        <Buttons />
+      </RecoilRoot>
     </div>
   );
 }
