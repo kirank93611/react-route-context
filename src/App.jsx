@@ -123,9 +123,10 @@ import { set } from "mongoose";
 
 //recoiil
 
-import { RecoilRoot, recoil, useRecoilState } from "recoil";
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
 import { countAtom } from "./store/atoms/count";
 function App() {
+  console.log("app was rendered");
   const [count, setCount] = useState(0);
 
   //wrap anyone (component) wants to use the teleported value inside a provider
@@ -137,6 +138,7 @@ function App() {
 }
 
 function Count() {
+  console.log("count was rendered");
   return (
     <div>
       <RecoilRoot>
@@ -148,12 +150,14 @@ function Count() {
 }
 
 function CountRenderer() {
+  console.log("countrenderer was rendered");
   const count = useRecoilValue(countAtom);
 
   return <div>{count}</div>;
 }
 
 function Buttons() {
+  console.log("buttons was rendered");
   const [count, setCount] = useRecoilState(countAtom);
 
   return (
